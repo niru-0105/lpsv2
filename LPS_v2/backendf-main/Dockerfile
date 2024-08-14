@@ -9,6 +9,9 @@ COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
 
+# Ensure the Maven wrapper script has execution permissions
+RUN chmod +x ./mvnw
+
 # Download the dependencies
 RUN ./mvnw dependency:go-offline
 
@@ -32,11 +35,3 @@ EXPOSE 8080
 
 # Run the application
 CMD ["java", "-jar", "loan-processing-system-0.0.1-SNAPSHOT.jar"]
-
-
-#docker run -p 8080:8080 \
-#    -e SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3306/testdb \
-#    -e SPRING_DATASOURCE_USERNAME=root \
-#    -e SPRING_DATASOURCE_PASSWORD=12345678 \
-#    my-spring-boot-app
-
