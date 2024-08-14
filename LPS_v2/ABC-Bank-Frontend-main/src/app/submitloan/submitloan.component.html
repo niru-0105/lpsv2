@@ -1,0 +1,288 @@
+@if(checkSubmit){
+<app-submit-success />
+}
+@else{
+
+<body>
+
+  <form id="form" [formGroup]="applicationForm" (ngSubmit)="submitForm()">
+    <h1>Please complete the loan application form below</h1>
+
+    <div>
+      <label for="firstName">First Name<span class="required">*</span></label>
+      <input id="firstName" placeholder="Enter your first name" formControlName="firstName">
+      <div class="errors" *ngIf="applicationForm.get('firstName')?.invalid &&(applicationForm.get('firstName')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('firstName')?.errors?.['required']">First Name is required.</small>
+        <small *ngIf="applicationForm.get('firstName')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="middleName">Middle Name</label>
+      <input id="middleName" placeholder="Enter your middle name" formControlName="middleName">
+      <div class="errors" *ngIf="applicationForm.get('middleName')?.invalid && (applicationForm.get('middleName')?.touched)">
+        <small *ngIf="applicationForm.get('middleName')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="lastName">Last Name<span class="required">*</span></label>
+      <input id="lastName" placeholder="Enter your last name" formControlName="lastName">
+      <div class="errors" *ngIf="applicationForm.get('lastName')?.invalid &&(applicationForm.get('lastName')?.touched || submitted) ">
+        <small *ngIf="applicationForm.get('lastName')?.errors?.['required']">Last Name is required.</small>
+        <small *ngIf="applicationForm.get('lastName')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="dateOfBirth">Date of Birth<span class="required">*</span></label>
+      <input max={{maxDate}} min={{minDate}} id="dateOfBirth" type="date" placeholder="Select your date of birth"
+        formControlName="dateOfBirth">
+      <div class="errors" *ngIf="applicationForm.get('dateOfBirth')?.invalid &&(applicationForm.get('dateOfBirth')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('dateOfBirth')?.errors?.['required']">Date of Birth is required.</small>
+        <small *ngIf="applicationForm.get('dateOfBirth')?.errors?.['ageInvalid']">Age must be between 18 and 65
+          years.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="maritalStatus">Marital Status<span class="required">*</span></label>
+      <select id="maritalStatus" placeholder="Select your marital status" formControlName="maritalStatus">
+        <!-- <option value="" disabled selected>Select your marital status</option> -->
+        <!-- <option value="Select">Select</option> -->
+        <option value="Single">Single</option>
+        <option value="Married">Married</option>
+        <option value="Separated">Separated</option>
+        <option value="Divorced">Divorced</option>
+        <option value="Widowed">Widowed</option>
+      </select>
+      <div class="errors" *ngIf="applicationForm.get('maritalStatus')?.invalid &&(applicationForm.get('maritalStatus')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('maritalStatus')?.errors?.['required']">Marital Status is required.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="ssnNumber">SSN Number<span class="required">*</span></label>
+      <input id="ssnNumber" placeholder="Enter your SSN number" formControlName="ssnNumber">
+      <div class="errors" *ngIf="applicationForm.get('ssnNumber')?.invalid &&(applicationForm.get('ssnNumber')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('ssnNumber')?.errors?.['required']">SSN Number is required.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="loanAmount">Loan Amount<span class="required">*</span></label>
+      <input id="loanAmount" type="number" min="0" placeholder="Enter the loan amount in $"
+        formControlName="loanAmount">
+      <div class="errors" *ngIf="applicationForm.get('loanAmount')?.invalid &&(applicationForm.get('loanAmount')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('loanAmount')?.errors?.['required']">Loan Amount is required.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="loanPurpose">Loan Purpose<span class="required">*</span></label>
+      <select id="loanPurpose" placeholder="Select the loan purpose" formControlName="loanPurpose">
+        <!-- <option value="" style="color: grey;" disabled selected>Select your loan purpose</option> -->
+        <!-- <option value="Select" disabled>Select</option> -->
+        <option value="Debt">Debt</option>
+        <option value="Home Loan">Home Loan</option>
+        <option value="Personel Loan">Personel Loan</option>
+        <option value="Educational Loan">Educational Loan</option>
+        <option value="Other">Other</option>
+      </select>
+      <div class="errors" *ngIf="applicationForm.get('loanPurpose')?.invalid &&(applicationForm.get('loanPurpose')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('loanPurpose')?.errors?.['required']">Loan Purpose is required.</small>
+      </div>
+    </div>
+
+
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description" placeholder="Enter a description" formControlName="description"></textarea>
+    </div>
+
+    <!-- here is the address -->
+    <fieldset>
+      <legend>Address</legend>
+
+      <label for="addressLine1">Address Line 1<span class="required">*</span></label>
+      <input type="text" id="addressLine1" placeholder="Enter address line 1" formControlName="addressLine1">
+      <div class="errors" *ngIf="applicationForm.get('addressLine1')?.invalid &&(applicationForm.get('addressLine1')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('addressLine1')?.errors?.['required']">Address Line 1 is required.</small>
+        <small *ngIf="applicationForm.get('addressLine1')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+
+      <label for="addressLine2">Address Line 2</label>
+      <input type="text" id="addressLine2" placeholder="Enter address line 2" formControlName="addressLine2">
+      <div class="errors" *ngIf="applicationForm.get('addressLine2')?.invalid &&(applicationForm.get('addressLine2')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('addressLine2')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+
+      <label for="city">City<span class="required">*</span></label>
+      <input type="text" id="city" placeholder="Enter your city" formControlName="city">
+      <div class="errors" *ngIf="applicationForm.get('city')?.invalid &&(applicationForm.get('city')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('city')?.errors?.['required']">City is required.</small>
+        <small *ngIf="applicationForm.get('city')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+
+      <label for="state">State<span class="required">*</span></label>
+      <input type="text" id="state" placeholder="Enter your state" formControlName="state">
+      <div class="errors" *ngIf="applicationForm.get('state')?.invalid &&(applicationForm.get('state')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('state')?.errors?.['required']">State is required.</small>
+        <small *ngIf="applicationForm.get('state')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+
+      <label for="postalCode">Postal Code<span class="required">*</span></label>
+      <input type="text" id="postalCode" placeholder="Enter your 5 digit postal code" formControlName="postalCode">
+      <div class="errors" *ngIf="applicationForm.get('postalCode')?.invalid &&(applicationForm.get('postalCode')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('postalCode')?.errors?.['required']">Postal Code is required.</small>
+        <small *ngIf="applicationForm.get('postalCode')?.errors?.['pattern']">Must be exactly 5 digits.</small>
+      </div>
+    </fieldset>
+
+    <!-- Here will come contact information -->
+    <fieldset>
+      <legend>Contact Information</legend>
+
+      <label for="phoneHome">Home Phone<span class="required">*</span></label>
+      <input type="text" id="phoneHome" placeholder="Enter your home phone number" formControlName="phoneHome">
+      <div class="errors" *ngIf="applicationForm.get('phoneHome')?.invalid &&(applicationForm.get('phoneHome')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('phoneHome')?.errors?.['required']">Home Phone is required.</small>
+        <small *ngIf="applicationForm.get('phoneHome')?.errors?.['pattern']">Must be exactly 10 digits.</small>
+      </div>
+
+      <label for="phoneOffice">Office Phone</label>
+      <input type="text" id="phoneOffice" placeholder="Enter your office phone number" formControlName="phoneOffice">
+      <div class="errors" *ngIf="applicationForm.get('phoneOffice')?.invalid &&(applicationForm.get('phoneOffice')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('phoneOffice')?.errors?.['pattern']">Must be exactly 10 digits.</small>
+      </div>
+
+      <label for="phoneMobile">Mobile<span class="required">*</span></label>
+      <input type="text" id="phoneMobile" placeholder="Enter your 10 digit mobile phone number"
+        formControlName="phoneMobile">
+      <div class="errors" *ngIf="applicationForm.get('phoneMobile')?.invalid &&(applicationForm.get('phoneMobile')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('phoneMobile')?.errors?.['required']">Mobile Number is required.</small>
+        <small *ngIf="applicationForm.get('phoneMobile')?.errors?.['pattern']">Must be exactly 10 digits.</small>
+      </div>
+
+      <label for="emailAddress">Email Address<span class="required">*</span></label>
+      <input type="email" id="emailAddress" placeholder="Enter your email address" formControlName="emailAddress">
+      <div class="errors" *ngIf="applicationForm.get('emailAddress')?.invalid &&(applicationForm.get('emailAddress')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('emailAddress')?.errors?.['required']">Email Address is required.</small>
+        <small *ngIf="applicationForm.get('emailAddress')?.errors?.['email']">Invalid email address.</small>
+      </div>
+    </fieldset>
+
+    <!-- here will come employee details -->
+    <fieldset>
+      <legend>Employment Details</legend>
+
+      <label for="employerName">Employer<span class="required">*</span></label>
+      <input type="text" id="employerName" placeholder="Enter your employer's name" formControlName="employerName">
+      <div class="errors" *ngIf="applicationForm.get('employerName')?.invalid &&(applicationForm.get('employerName')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('employerName')?.errors?.['required']">Employer Name is required.</small>
+        <small *ngIf="applicationForm.get('employerName')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+
+      <label for="annualSalary">Annual Salary<span class="required">*</span></label>
+      <input min="10000" type="number" id="annualSalary" placeholder="Enter your annual salary in $"
+        formControlName="annualSalary">
+      <div class="errors" *ngIf="applicationForm.get('annualSalary')?.invalid &&(applicationForm.get('annualSalary')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('annualSalary')?.errors?.['required']">Annual Salary is required.</small>
+        <small *ngIf="applicationForm.get('annualSalary')?.errors?.['pattern']">Must be numeric.</small>
+        <small *ngIf="applicationForm.get('annualSalary')?.errors?.['min']">Must greater than $10,000</small>
+      </div>
+
+      <label for="workExperience">Work Experience<span class="required">*</span></label>
+      <div class="work-experience">
+        <div>
+          <input type="number" min="0" id="workExperienceYears" name="workExperienceYears" placeholder="Years*"
+            formControlName="workExperienceYears">
+          <div
+            *ngIf="(applicationForm.get('workExperienceYears')?.touched || submitted)">
+            <small *ngIf="applicationForm.get('workExperienceYears')?.errors?.['required']">Work Experience year is
+              required.</small>
+            <small *ngIf="applicationForm.get('workExperienceYears')?.errors?.['pattern']">Must be numeric.</small>
+          </div>
+        </div>
+        <div>
+
+
+          <input type="number" id="workExperienceMonths" name="workExperienceMonths" placeholder="Months*"
+            formControlName="workExperienceMonths">
+          <div
+            *ngIf="(applicationForm.get('workExperienceMonths')?.touched || submitted)">
+            <small *ngIf="applicationForm.get('workExperienceMonths')?.errors?.['required']">Work Experience Months are
+              required.</small>
+            <small *ngIf="applicationForm.get('workExperienceMonths')?.errors?.['pattern']">Must be numeric.</small>
+          </div>
+        </div>
+
+      </div>
+
+
+      <label for="designation">Designation</label>
+      <input type="text" id="designation" placeholder="Enter your designation" formControlName="designation">
+      <div class="errors" *ngIf="applicationForm.get('designation')?.invalid &&(applicationForm.get('designation')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('designation')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+
+      <label for="employerAddressLine1">Address Line 1<span class="required">*</span></label>
+      <input type="text" id="employerAddressLine1" placeholder="Enter employer's address line 1"
+        formControlName="employerAddressLine1">
+      <div
+        *ngIf="applicationForm.get('employerAddressLine1')?.invalid &&(applicationForm.get('employerAddressLine1')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('employerAddressLine1')?.errors?.['required']">Employer Address Line 1 is
+          required.</small>
+        <small *ngIf="applicationForm.get('employerAddressLine1')?.errors?.['maxLength']">Maximum length is
+          255.</small>
+      </div>
+
+
+      <label for="employerAddressLine2">Address Line 2</label>
+      <input type="text" id="employerAddressLine2" placeholder="Enter employer's address line 2"
+        formControlName="employerAddressLine2">
+      <div class="errors" *ngIf="applicationForm.get('lastName')?.invalid &&(applicationForm.get('lastName')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('lastName')?.errors?.['required']">First Name is required.</small>
+        <small *ngIf="applicationForm.get('lastName')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+
+      <label for="employerCity">City<span class="required">*</span></label>
+      <input type="text" id="employerCity" placeholder="Enter employer's city" formControlName="employerCity">
+      <div class="errors" *ngIf="applicationForm.get('employerCity')?.invalid &&(applicationForm.get('employerCity')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('employerCity')?.errors?.['required']">Employer City is required.</small>
+        <small *ngIf="applicationForm.get('employerCity')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+
+      <label for="employerState">State<span class="required">*</span></label>
+      <input type="text" id="employerState" placeholder="Enter employer's state" formControlName="employerState">
+      <div class="errors" *ngIf="applicationForm.get('employerState')?.invalid &&(applicationForm.get('employerState')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('employerState')?.errors?.['required']">Employer State is required.</small>
+        <small *ngIf="applicationForm.get('employerState')?.errors?.['maxLength']">Maximum length is 255.</small>
+      </div>
+
+      <label for="employerPostalCode">Postal Code<span class="required">*</span></label>
+      <input type="text" id="employerPostalCode" placeholder="Enter your employer's 5 digit postal code"
+        formControlName="employerPostalCode">
+      <div
+        *ngIf="applicationForm.get('employerPostalCode')?.invalid &&(applicationForm.get('employerPostalCode')?.touched || submitted)">
+        <small *ngIf="applicationForm.get('employerPostalCode')?.errors?.['required']">Employer Postal Code is
+          required.</small>
+        <small *ngIf="applicationForm.get('employerPostalCode')?.errors?.['pattern']">Must be exactly 5
+          digits.</small>
+      </div>
+    </fieldset>
+
+
+    <div class="errors" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <div class="errors" *ngIf="formErrors.length > 0">
+      <p class="error">Please fill the required details correctly and try submitting again</p>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" id="submit">Submit</button>
+      <button type="button" id="cancel" [routerLink]="['']">Cancel</button>
+    </div>
+
+  </form>
+</body>
+}

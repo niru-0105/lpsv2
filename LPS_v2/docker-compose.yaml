@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  java-container:
+    image: "java-backend-image-v2"
+    build: ./backendf-main
+    ports:
+      - '8080:8080'
+  angular-container:
+    image: "angular-image-v2"
+    build: ./ABC-Bank-Frontend-main
+    ports:
+      - '4200:4200'
+  model-container:
+    image: "model-image-v2"
+    build: ./Model_g4
+    ports:
+      - '7778:7778'

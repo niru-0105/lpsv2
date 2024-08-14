@@ -1,0 +1,2 @@
+docker build -t model-g4 .
+docker run -p 7778:7778 --name model-container --network bank-net model-g4

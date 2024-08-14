@@ -1,0 +1,310 @@
+/* Basic styles for the form */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, sans-serif;
+
+}
+
+form {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 20px;
+  max-width: 800px;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  border: none;
+  margin-bottom: 1.5rem;
+  padding: 0;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 10px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  display: block;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: lighter;
+  // font-weight: bold;
+}
+
+label span {
+  color: red;
+}
+
+div small {
+  color: red;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Grid layout for the form */
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  width: 45%;
+}
+
+
+button[type="button"] {
+  background-color: #6c757d;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.error {
+  color: red;
+}
+
+.error ul {
+  list-style: none;
+  padding: 0;
+}
+
+.error li {
+  margin-bottom: 5px;
+}
+
+@media (width <=480px) {
+  .buttons {
+    flex-direction: column;
+
+  }
+
+  button {
+    width: 100%;
+    margin: 10px auto;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+
+  input,
+  select,
+  textarea {
+    padding: 8px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}
+
+/* Heading style */
+h1 {
+  text-align: center;
+  font-size: 44px;
+  font-weight: bold;
+  font-size: 26px;
+  color: #1a3689;
+  margin: auto;
+  max-width: 863px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+/* styles.css */
+
+
+
+input {
+  width: 95%;
+  border-radius: 3px;
+}
+
+
+/* Input and Select Fields */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Added shadow */
+  transition: box-shadow 0.3s ease;
+  padding-right: 0px;
+}
+
+/* Button Style */
+button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+}
+
+button[type="button"] {
+  background-color: transparent;
+  color: red;
+  border: 1px solid red;
+
+}
+
+#cancel:hover {
+  opacity: 0.9;
+  background-color: red;
+  color: white;
+}
+
+#submit:hover {
+  opacity: 0.8;
+  background-color: #007bff;
+}
+
+/* Error Messages */
+.error {
+  color: #dc3545;
+  font-size: 0.875rem;
+}
+
+.success-message {
+  color: #28a745;
+  font-size: 0.875rem;
+}
+
+
+
+
+input::placeholder {
+  color: #8e8e8e;
+  opacity: 1;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+
+
+select {
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  padding: 8px 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  // color: #8e8e8e;
+}
+
+select:focus {
+  border-color: #a8a8a8;
+}
+
+select option {
+  color: #333;
+}
+
+select option[disabled][selected] {
+  color: #8e8e8e;
+  display: none;
+}
+select:invalid {
+  color: #8e8e8e;
+}
+
+li {
+  list-style: square;
+}
+
+
+
+legend[_ngcontent-ng-c1190071546] {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.7rem;
+  padding-left: 0;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #8e8e8e;
+  opacity: 1;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: sans-serif;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+
+.error {
+  color: red;
+}
+
+
+
+input {
+  margin-bottom: 0;
+}
+
+label {
+  margin-top: 10px;
+}
+
+
+.work-experience {
+  display: flex;
+  justify-content: space-between;
+}
+
+.work-experience>div {
+  width: 48%;
+}

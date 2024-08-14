@@ -1,0 +1,26 @@
+<h2>Submitted Applications</h2>
+<p>You can view your applications here</p>
+<table>
+  <thead>
+    <tr>
+      <th>Application ID</th>
+      <th>Applicant Name</th>
+      <th>Submitted Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let application of applications">
+      <td ><a id={{application.applicationID}} [routerLink]="['/viewapplication', application.applicationID]">{{ application.applicationID }}</a></td>
+
+      <td>{{ application.name.firstName }} {{application.name.middleName}} {{application.name.lastName}}</td>
+
+      <td>{{ application.submittedDate }}</td>
+      <td class="status">{{ application.applicationStatus }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<button type="button" [routerLink]="['']">Back</button>

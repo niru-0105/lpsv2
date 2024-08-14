@@ -1,0 +1,210 @@
+<div class="body1">
+  <div class="application-details">
+    <h1>Your Application</h1>
+    <div class="view-application foreground">
+      <div class="application-summary name-fields">
+
+        <div>
+          <div>
+            <strong>Application ID: </strong> {{ application.application.id }}
+          </div>
+
+          <div>
+            <strong>Status: </strong> <span id="status"> {{ application.applicationStatus }}</span>
+          </div>
+          <div>
+            <strong>Score: </strong> {{ application.score }}
+          </div>
+        </div>
+
+
+        <div>
+          <strong>Decline Reason</strong>
+          <div >
+            <p *ngIf="application.reason === '' || application.reason === null"> None</p>
+            <p *ngIf="application.reason !== null"> {{ application.reason}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="accordion">
+
+      <div class="tab">
+        <input type="checkbox" name="accordion-1" id="personalInformation" checked>
+        <label for="personalInformation" class="tab__label">Personal Information</label>
+        <div class="tab__content">
+
+          <div class="original-application-left name-fields">
+
+
+            <div>
+              <label>First Name: </label>
+              <span> {{ application.application.name.firstName }}</span>
+            </div>
+            <div>
+              <label>Middle Name: </label>
+              <span> {{ application.application.name.middleName }}</span>
+            </div>
+            <div>
+              <label>Last Name: </label>
+              <span> {{ application.application.name.lastName }}</span>
+            </div>
+            <div>
+              <label>Date of Birth: </label>
+              <span> {{ application.application.dateOfBirth}}</span>
+            </div>
+
+            <div>
+              <label>Marital Status: </label>
+              <span> {{ application.application.maritalStatus}}</span>
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+
+
+      <div class="tab">
+        <input type="checkbox" name="accordion-1" id="loanInformation">
+        <label for="loanInformation" class="tab__label">Loan Information</label>
+        <div class="tab__content">
+
+          <div class="loanInformation">
+            <div>
+              <label>SSN Number: </label>
+              <span> {{ application.application.ssnNumber}}</span>
+            </div>
+            <div>
+              <label>Loan Amount: </label>
+              <span> {{ application.application.loanAmount}}</span>
+            </div>
+            <div>
+              <label>Loan Purpose: </label>
+              <span> {{ application.application.loanPurpose}}</span>
+            </div>
+            <div>
+              <label>Description: </label>
+              <span> {{ application.application.description}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="tab">
+        <input type="checkbox" name="accordion-1" id="address">
+        <label for="address" class="tab__label">Address</label>
+        <div class="tab__content">
+          <div class="address secondary-border name-fields">
+            <div>
+              <label>Address Line 1: </label>
+              <span> {{ application.application.address.addressLine1}}</span>
+            </div>
+            <div>
+              <label>Address Line 2: </label>
+              <span> {{ application.application.address.addressLine2}}</span>
+            </div>
+            <div>
+              <label>City: </label>
+              <span> {{ application.application.address.city}}</span>
+            </div>
+            <div>
+              <label>State: </label>
+              <span> {{ application.application.address.state}}</span>
+            </div>
+            <div>
+              <label>Postal Code: </label>
+              <span> {{ application.application.address.postalCode}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab">
+        <input type="checkbox" name="accordion-1" id="contactInformation">
+        <label for="contactInformation" class="tab__label">Contact Information</label>
+        <div class="tab__content">
+          <div class="contact-info secondary-border name-fields">
+            <div>
+              <label>Home Phone: </label>
+              <span> {{ application.application.phoneNumber.homePhone}}</span>
+            </div>
+            <div>
+              <label>Office Phone: </label>
+              <span> {{ application.application.phoneNumber.officePhone}}</span>
+            </div>
+            <div>
+              <label>Mobile: </label>
+              <span> {{ application.application.phoneNumber.mobilePhone}}</span>
+            </div>
+            <div>
+              <label>Email Address: </label>
+              <span> {{ application.application.emailAddress}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab">
+        <input type="checkbox" name="accordion-1" id="employmentDeatils">
+        <label for="employmentDeatils" class="tab__label">Employment Deatils</label>
+        <div class="tab__content">
+          <div class="employment-details secondary-border">
+            <!-- <div class="employment-info name-fields"> -->
+
+            <div>
+              <label>Employer Name: </label>
+              <span> {{ application.application.employmentDetails.employerName}}</span>
+            </div>
+            <div>
+              <label>Annual Salary: </label>
+              <span> {{ application.application.employmentDetails.annualSalary}}</span>
+            </div>
+
+            <div>
+              <label>Work Experience: </label>
+              <span> {{ application.application.employmentDetails.workExperience}}</span>
+            </div>
+            <div>
+              <label>Designation: </label>
+              <span> {{ application.application.designation}}</span>
+            </div>
+
+            <div>
+              <label>Address Line 1: </label>
+              <span> {{ application.application.employmentDetails.currentEmployerAddress.addressLine1}}</span>
+            </div>
+            <div>
+              <label>Address Line 2: </label>
+              <span> {{ application.application.employmentDetails.currentEmployerAddress.addressLine2}}</span>
+            </div>
+            <div>
+              <label>City: </label>
+              <span> {{ application.application.employmentDetails.currentEmployerAddress.city}}</span>
+            </div>
+            <div>
+              <label>State: </label>
+              <span> {{ application.application.employmentDetails.currentEmployerAddress.state}}</span>
+            </div>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </section>
+
+
+    <div class="last">
+      <button type="button" [routerLink]="['/viewapps']">Back</button>
+    </div>
+
+  </div>
+</div>

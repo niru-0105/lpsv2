@@ -1,0 +1,4 @@
+docker build -t java-backend-app .
+
+docker network create bank-net
+docker run -p 8080:8080 --name java-container --network bank-net java-backend-app

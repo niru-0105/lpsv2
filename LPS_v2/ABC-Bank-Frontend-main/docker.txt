@@ -1,0 +1,2 @@
+docker build -t angular-app .
+docker run -p 4200:4200 --name angular-container --network bank-net angular-app
